@@ -10,6 +10,7 @@ const tokenBlacklistModel = require("../models/blacklist.model")
  */
 async function registerUserController(req, res) {
 
+    console.log("Register controller hit")
     const { username, email, password } = req.body
 
     if (!username || !email || !password) {
@@ -42,7 +43,13 @@ async function registerUserController(req, res) {
         { expiresIn: "1d" }
     )
 
-    res.cookie("token", token)
+    console.log("Generated token:", token)
+
+    res.cookie("token", token, {
+        httpOnly: true,
+        secure: false, // Set to true if using HTTPS
+        sameSite: "lax"
+    })
 
 
     res.status(201).json({
