@@ -1,5 +1,2 @@
-# iuseeeeeeeee
+_# ai resume builder _
 
-
-  numer  1 
-  numer  2 
